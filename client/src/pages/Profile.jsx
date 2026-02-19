@@ -21,7 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-const API_URL = import.meta.env.VITE_API_URL || "";
+
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const Profile = () => {
 
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`${API_URL}/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const Profile = () => {
   const handleDeleteUser = async (req, res, next) => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`${API_URL}/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -116,8 +116,8 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch(`${API_URL}/api/auth/signout`);
-      const data = await res.json();
+      const res = await fetch("/api/auth/signout");
+      const data = res.json();
       if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
         return;
@@ -131,7 +131,7 @@ const Profile = () => {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`${API_URL}/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -145,7 +145,7 @@ const Profile = () => {
 
   const handleListingDelete = async (listindId) => {
     try {
-      const res = await fetch(`${API_URL}/api/listing/delete/${listindId}`, {
+      const res = await fetch(`api/listing/delete/${listindId}`, {
         method: "DELETE",
       });
       const data = await res.json();

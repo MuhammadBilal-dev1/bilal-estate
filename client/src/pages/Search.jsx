@@ -1,7 +1,6 @@
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ListingItems from "../components/ListingItems";
-const API_URL = import.meta.env.VITE_API_URL || "";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -56,7 +55,7 @@ const Search = () => {
       setshowwMore(false);
       const searchQuery = urlParams.toString();
       try {
-        const res = await fetch(`${API_URL}/api/listing/get?${searchQuery}`);
+        const res = await fetch(`/api/listing/get?${searchQuery}`);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -128,7 +127,7 @@ const Search = () => {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
-    const res = await fetch(`${API_URL}/api/listing/get?${searchQuery}`);
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
     const data = await res.json();
     console.log(data);
 

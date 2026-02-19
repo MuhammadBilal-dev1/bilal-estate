@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,7 +6,6 @@ import "swiper/css/bundle";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import ListingItems from "../components/ListingItems";
-const API_URL = import.meta.env.VITE_API_URL || "";
 
 const Home = () => {
   const [offerListings, setOfferListings] = useState([]);
@@ -18,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     const fetchOffertListings = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/listing/get?offer=true&limit=4`);
+        const res = await fetch("/api/listing/get?offer=true&limit=4");
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -29,7 +28,7 @@ const Home = () => {
 
     const fetchRentListings = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/listing/get?type=rent&limit=4`);
+        const res = await fetch("/api/listing/get?type=rent&limit=4");
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -40,7 +39,7 @@ const Home = () => {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/listing/get?type=sale&limit=4`);
+        const res = await fetch("/api/listing/get?type=sale&limit=4");
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
