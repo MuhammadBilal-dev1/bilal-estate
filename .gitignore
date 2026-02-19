@@ -1,0 +1,50 @@
+# ==== General ====
+.DS_Store
+Thumbs.db
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+
+# ==== Node / Monorepo ====
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# ==== Env / Secrets (do not commit) ====
+.env
+.env.*
+client/.env
+client/.env.*
+server/.env
+server/.env.*
+
+# ==== Vite / React Build Artifacts ====
+client/dist/
+client/.vite/
+client/.cache/
+
+# ==== Coverage / Reports ====
+coverage/
+client/coverage/
+server/coverage/
+
+# ==== Editors / OS ====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==== Vercel local metadata (keep vercel.json) ====
+.vercel/
+
+# ==== Firebase local metadata ====
+.firebase/
+.firebaserc
+
+# ==== Misc ====
+tmp/
+temp/
