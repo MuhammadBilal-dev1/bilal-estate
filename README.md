@@ -37,8 +37,8 @@
 
 ```mermaid
 flowchart LR
-  A[Browser] --> B[React Client\n(Vite + Tailwind + Redux)]
-  B -->|HTTP fetch| C[Express API\n/server/api]
+  A[Browser] --> B[React Client<br/>Vite + Tailwind + Redux]
+  B -->|HTTP fetch| C[Express API<br/>server/api]
   C --> D[(MongoDB)]
   B -.->|Google OAuth| E[Firebase Auth]
   B -->|Upload Images| F[Firebase Storage]
